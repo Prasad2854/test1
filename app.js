@@ -1,8 +1,11 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const mysql = require("mysql2");
+dotenv.config();
 const bodyParser = require("body-parser");
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // Set up body parser to handle form data
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,7 +48,7 @@ app.post("/process", (req, res) => {
 });
 
 // Start the server
-const port = 3000;
+// const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
