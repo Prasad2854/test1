@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store in Database</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <style>
+    /* body {
+      background-color: aliceblue;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      margin: 50px;
+    }
+    .container1 {
+      display: flex;
+      margin: 60px;
+      justify-content: center;
+      background-color: aquamarine;
+      height: 1000px;
+      width: 400px;
+      
+    }
+    .form {
+      
+      gap: 10px;
+      height: 20px;
+    }
+    .input {
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border-color: brown;
+    }  */
+    body {
+       
+background-color: whitesmoke;	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+    }
+
+    
+
+    header {
+    
+      text-align: center;
+      padding: 20px;
+      background-color: #6495ed; /* cornflowerblue */
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .container1 {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(137deg, #b6eedf, #c1b1e3, #e6cd7d);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 26s ease infinite;
+    -moz-animation: AnimationName 26s ease infinite;
+    animation: AnimationName 26s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 60%}
+    50%{background-position:100% 41%}
+    100%{background-position:0% 60%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 60%}
+    50%{background-position:100% 41%}
+    100%{background-position:0% 60%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 60%}
+    50%{background-position:100% 41%}
+    100%{background-position:0% 60%}
+}
+      /* aquamarine */
+  
+    
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .input {
+      padding: 10px;
+      border: 1px solid #8b4513; /* saddlebrown */
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Styled checkboxes */
+    .checkbox-group {
+      display: flex;
+
+      flex-direction: row; /* Set to "row" to align checkboxes horizontally */
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #8b4513; /* saddlebrown */
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 5px; /* Adjust spacing between checkboxes */
+    }
+
+    .checkbox-wrapper input[type="checkbox"]:checked {
+      background-color: #8b4513; /* saddlebrown */
+      border: 2px solid #8b4513; /* saddlebrown */
+    }
+
+    .checkbox-wrapper label {
+      cursor: pointer;
+    }
+
+    input[type="text"]::placeholder {
+      color: #a9a9a9; /* darkgray */
+    }
+
+    input[type="submit"] {
+      background-color: #32cd32; /* limegreen */
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #228b22; /* forestgreen */
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Single Form</h1>
+      <h4 style="margin-top: 15px">One Man, One <span>Form</span></h4>
+    </div>
+    <div class="container1">
+      <form class="form" action="/process" method="post">
+        <!-- <label for="firstName">First Name:</label> -->
+        <input
+          class="input"
+          type="text"
+          id="firstName"
+          name="firstName"
+          placeholder="First Name"
+          required
+        />
+        <br />
+        <!-- <label for="middleName">Middle Name:</label> -->
+        <input
+          class="input"
+          type="text"
+          id="middleName"
+          name="middleName"
+          placeholder="Middle Name"
+          required
+        /><br />
+        <!-- <label for="lastName">:</label> -->
+        <input
+          class="input"
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Last Name"
+          required
+        /><br />
+        <!-- <label for="dob">Date of Birth:</label> -->
+        <input
+          class="input"
+          type="date"
+          id="dob"
+          name="dob"
+          placeholder="Date of Birth:"
+          required
+        /><br />
+        <div class="checkbox-group">
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="male" name="gender" value="Male" />
+            <label for="male">Male</label>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="female" name="gender" value="Female" />
+            <label for="female">Female</label>
+          </div>
+        </div>
+
+        <br />
+        <input
+          class="input"
+          type="tel"
+          id="phoneNumber"
+          name="phoneNumber"
+          pattern="[0-9]{10}"
+          placeholder="Phone Number"
+          required
+        />
+
+        <br />
+        <input
+          class="input"
+          type="text"
+          id="aadharNumber"
+          name="aadharNumber"
+          pattern="[0-9]{12}"
+          placeholder="Adhar Number"
+          required
+        /><br />
+
+        <input class="input" type="submit" value="Submit" />
+        <button onclick="redirectToDisplay()">Display Data</button>
+       
+        </a>
+      </form>
+    </div>
+  </body>
+</html>
