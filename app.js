@@ -1,16 +1,11 @@
 const dotenv = require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql2");
-
+const https = require("https");
 const bodyParser = require("body-parser");
 
 const app = express();
 const port = process.env.PORT || 3000;
-
-// const dbHost = process.env.DB_HOST;
-// const dbUser = process.env.DB_USER;
-// const dbPassword = process.env.DB_PASSWORD;
-// const dbName = process.env.DB_NAME;
 
 const dbConfig = {
   host: process.env.DB_HOST,
@@ -49,17 +44,17 @@ app.post("/process", (req, res) => {
 
   // MySQL query to insert data
   pool1.query(
-    "INSERT INTO registration (name,middleName, lastname, dob,gender, phoneNumber,aadharNumber) VALUES (?, ?, ?, ?, ?, ?,?)",
+    "INSERT INTO registration (firstName,middleName, lastname, dob,gender, phoneNumber,aadharNumber) VALUES (?, ?, ?, ?, ?, ?,?)",
     [firstName, middleName, lastName, dob, gender, phoneNumber, aadharNumber],
     (error, results) => {
       if (error) throw error;
-      res.send("Record added successfully");
+      res.send(`Your added details are \n ${firstName}`);
     }
   );
 });
-
+const httpsSever = https.createServer(app);
 // Start the server
 // const port = 3000;
-app.listen(port, () => {
+httpsSever.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
