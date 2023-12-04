@@ -37,39 +37,42 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/process", (req, res) => {
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const middleName = req.body.middleName;
-  const dob = req.body.dob;
-  const phoneNumber = req.body.phoneNumber;
-  const aadharNumber = req.body.aadharNumber;
-  const gender = req.body.gender || "Not specified";
-  const licenceNumber = req.body.licenceNumber;
-  const panNumber = req.body.panNumber;
-  const email = req.body.email;
+app
+  .route("/process")
+  .get((req, res) => {})
+  .post((req, res) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const middleName = req.body.middleName;
+    const dob = req.body.dob;
+    const phoneNumber = req.body.phoneNumber;
+    const aadharNumber = req.body.aadharNumber;
+    const gender = req.body.gender || "Not specified";
+    const licenceNumber = req.body.licenceNumber;
+    const panNumber = req.body.panNumber;
+    const email = req.body.email;
 
-  // MySQL query to insert data
-  pool1.query(
-    "INSERT INTO registration (firstName,middleName, lastname, dob,gender, phoneNumber,aadharNumber,licenceNumber,panNumber, email) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?, ?)",
-    [
-      firstName,
-      middleName,
-      lastName,
-      dob,
-      gender,
-      phoneNumber,
-      aadharNumber,
-      licenceNumber,
-      panNumber,
-      email,
-    ],
-    (error, results) => {
-      if (error) throw error;
-      res.send(`Your added details are \n ${firstName}`);
-    }
-  );
-});
+    // MySQL query to insert data
+    pool1.query(
+      "INSERT INTO registration (firstName,middleName, lastname, dob,gender, phoneNumber,aadharNumber,licenceNumber,panNumber, email) VALUES (?, ?, ?, ?, ?, ?,?, ?, ?, ?)",
+      [
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        gender,
+        phoneNumber,
+        aadharNumber,
+        licenceNumber,
+        panNumber,
+        email,
+      ],
+      (error, results) => {
+        if (error) throw error;
+        res.send(`Your added details are \n ${firstName}`);
+      }
+    );
+  });
 
 // Start the server
 // const port = 3000;
